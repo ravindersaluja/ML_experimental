@@ -31,7 +31,7 @@ df.loc[:,'Survived'].shape #This on the other hand is 1D
 y = df.Survived
 y.shape #1D
 
-# Building a Classification Model 
+# Building a Classification Model using just a single independent variable - Pclass
 
 from sklearn.linear_model import LogisticRegression
 logreg = LogisticRegression()
@@ -42,4 +42,18 @@ from sklearn.model_selection import cross_val_score
 cross_val_score(logreg, X, y, cv=5, scoring='accuracy').mean()
 
 # Checking the null accuracy
-y.value_counts(normalize = True)
+y.value_counts(normalize = True)[0]
+
+
+df.head()
+
+# Dummy encoding or one hot encoding
+
+
+
+
+
+
+
+
+
