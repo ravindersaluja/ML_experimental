@@ -55,8 +55,20 @@ ohe.categories_
 ohe.fit_transform(df[['Embarked']])
 ohe.categories_
 
+# Dummy encoding or one hot encoding
+# ---------------------------------------
+# Changing X
+X = df.drop('Survived', axis=1)
+X.head()
 
+# Column transformer
+from sklearn.compose import make_column_transformer
 
+# Treating Pclass as a numeric variable and not as a categorical variable and hence not ohe it.
+
+# Use column transformer when you have features in the df that need different preprocessing
+column_trans = make_column_transformer((OneHotEncoder(), ['Sex', 'Embarked']), remainder='passthrough')
+column_trans.fit_transform(X)
 
 
 
