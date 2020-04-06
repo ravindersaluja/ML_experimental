@@ -77,6 +77,18 @@ pipe = make_pipeline(column_trans, logreg)
 # Here, the cross val score will first split the data that is X and y in 5 sets(cv = 5) and then run the 'pipe' i.e. the pipeline
 cross_val_score(pipe, X, y, cv=5, scoring='accuracy').mean()
 
+# Now fit and transform the pipe(instead of model fitting and transforming)
+pipe.fit(X,y)
+
+# Creating random test data, as we didn't split the data earlier into train and test
+X_new = X.sample(5, random_state=99) 
+X_new
+
+# Now predicting the pipe on the new text data
+pipe.predict(X_new) #This is y pred of the new data
+
+
+
 
 
 
