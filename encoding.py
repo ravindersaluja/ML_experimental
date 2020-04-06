@@ -44,10 +44,20 @@ cross_val_score(logreg, X, y, cv=5, scoring='accuracy').mean()
 # Checking the null accuracy
 y.value_counts(normalize = True)[0]
 
-
+# Dummy encoding or One Hot Encoding
 df.head()
+from sklearn.preprocessing import OneHotEncoder
+# del(ohe)
+ohe = OneHotEncoder(sparse=False) # Making it dense
+ohe.fit_transform(df[['Sex']])
+ohe.categories_
 
-# Dummy encoding or one hot encoding
+ohe.fit_transform(df[['Embarked']])
+ohe.categories_
+
+
+
+
 
 
 
