@@ -70,9 +70,12 @@ from sklearn.compose import make_column_transformer
 column_trans = make_column_transformer((OneHotEncoder(), ['Sex', 'Embarked']), remainder='passthrough')
 column_trans.fit_transform(X)
 
+# Creating pipeline
+from sklearn.pipeline import make_pipeline
+pipe = make_pipeline(column_trans, logreg)
 
-
-
+# Here, the cross val score will first split the data that is X and y in 5 sets(cv = 5) and then run the 'pipe' i.e. the pipeline
+cross_val_score(pipe, X, y, cv=5, scoring='accuracy').mean()
 
 
 
